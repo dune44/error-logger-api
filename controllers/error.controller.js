@@ -2,8 +2,8 @@ const errorSchema = require( './../schema/errors.schema' );
 
 const methods = {
   Create: {
-    error: () => {
-      
+    error: async () => {
+
     }
   }
 };
