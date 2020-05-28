@@ -1,4 +1,3 @@
-const NODE_ENV = 'test';
 const app = require( './dev.app' );
 const config = require( './../etc/dev.config' );
   

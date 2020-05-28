@@ -7,6 +7,8 @@ const server = require( './../bin/test.index' );
 
 chai.use(chaiHttp);
 
+const file = 'error.route.test.js';
+
 describe('Error Route /api/error', () =>{
   const st = 'MongooseError: The `uri` parameter to `openUri()` must be a string, got "number". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.' +
   'at NativeConnection.Connection.openUri (/Users/dune44/Projects/Github Portfolio/error-logger-api/node_modules/mongoose/lib/connection.js:579:11)' +
@@ -83,6 +85,5 @@ describe('Error Route /api/error', () =>{
   describe('GET All errors', async () => {
 
   });
-
 
 });
