@@ -18,8 +18,12 @@ const methods = {
     }
   },
   Read: {
-    all: () => {
+    all: async () => {
+      try {
 
+      } catch ( e ) {
+        console.error( e );
+      }
     },
     error_id: async eid => {
       try {

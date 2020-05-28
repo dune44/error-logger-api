@@ -192,3 +192,62 @@ describe( 'check database saved values', () => {
   });
 
 });
+
+describe( 'Read all', () => {
+
+  let read_all_result;
+
+  before( async () => {
+    read_all_result = await errorController.Read.all();
+    done();
+  });
+
+  after( done => { done(); } );
+
+  // Property Type
+  it( 'read_all_result should have be array', () => {
+    expect( read_all_result ).to.be.a( 'array' );
+  });
+
+  it( 'read_all_result.file should be a string', () => {
+    expect( read_all_result.file ).to.be.a( 'string' );
+  });
+
+  it( 'read_all_result.info should be a string', () => {
+    expect( read_all_result.info ).to.be.a( 'string' );
+  });
+
+  it( 'read_all_result.message should be a string', () => {
+    expect( read_all_result.message ).to.be.a( 'string' );
+  });
+
+  it( 'read_all_result.method should be a string', () => {
+    expect( read_all_result.method ).to.be.a( 'string' );
+  });
+
+  it( 'read_all_result.processId should be a string', () => {
+    expect( read_all_result.processId ).to.be.a( 'string' );
+  });
+
+  it( 'read_all_result.serverName should be a string', () => {
+    expect( read_all_result.serverName ).to.be.a( 'string' );
+  });
+
+  it( 'read_all_result.stackTrace should be a string', () => {
+    expect( read_all_result.stackTrace ).to.be.a( 'string' );
+  });
+
+  it( 'read_all_result.timestamp should be a string', () => {
+    expect( read_all_result.timestamp ).to.be.a( 'string' );
+  });
+
+  it( 'read_all_result.variables should be a string', () => {
+    expect( read_all_result.variables ).to.be.a( 'string' );
+  });
+
+  // Return Value
+  it( 'read_all_result should be have length of 1', () => {
+    expect( read_all_result.length ).to.equal( 1 );
+  });
+  
+});
