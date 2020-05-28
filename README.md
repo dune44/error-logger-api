@@ -6,7 +6,9 @@ download and add config files for test, dev and production as needed.
 
 ## Config Files
 /etc/dev.config.js
+
 /etc/production.config.js
+
 /etc/dev.config.js
 
 ## Config Variables
