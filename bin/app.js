@@ -1,8 +1,9 @@
-export default env => {
+module.exports = env => {
   const express = require( 'express' );
   const mongoose = require( 'mongoose' );
   const bodyParser = require( 'body-parser' );
-  const config = require( ( process.env && process.env.NODE_ENV && process.env.NODE_ENV === 'production' ) ? './../etc/production.config' : ( env == 'dev') ? './../etc/dev.config' : './../test.config' );
+  const config = require( ( process.env && process.env.NODE_ENV && process.env.NODE_ENV === 'production' ) ? './../etc/production.config' : ( env == 'dev') ? './../etc/dev.config' : './../etc/test.config' );
+  console.log( 'config' );
   console.log( config );
   const MongoUri = config.MONGO_URL + config.DATABASE;
   mongoose.connect( MongoUri,  { "useNewUrlParser": true, "useUnifiedTopology": true, "useCreateIndex": true } );
@@ -10,7 +11,7 @@ export default env => {
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ 'extended': false }));
   app.use( bodyParser.json() );
-  require('./routes/api.route')(app);
+  ( () => { require( './routes/api.route' )( app ); })();
   app.use(function (req, res, next) {
     res.status(404).send('Sorry cant find that!');
   });

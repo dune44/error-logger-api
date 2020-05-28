@@ -1,3 +1,4 @@
+require( './../bin/app' )( 'test' );
 const errorController = require( './../controllers/error.controller' );
 const errorSchema = require( './../schema/errors.schema' );
 const chai = require( 'chai' );
@@ -20,17 +21,25 @@ const errorObj = {
   stackTrace: st,
   variables: '{"launch":"ocean","pithy":true,"myList":["oranges","apples","bananas"]}'
 };
+const purgeDB = next => {
+  errorSchema.deleteMany({}, e => {
+    if ( e ) console.error( e );
+    else next();
+  });
+};
 
 describe( 'Create a full error', () => {
 
   let create_result;
 
   before( async () => {
-    create_result = await errorController.Create.error( errorObj );
-    // Aux variables for testing.  Not for exposure to endpoint.
-    eid = create_result._id;
-    resultTimestamp = create_result.timestamp;
-    return;
+    purgeDB( async () => {
+      create_result = await errorController.Create.error( errorObj );
+      // Aux variables for testing.  Not for exposure to endpoint.
+      eid = create_result._id;
+      resultTimestamp = create_result.timestamp;
+      return;
+    });
   });
 
   after( done => { done(); } );
