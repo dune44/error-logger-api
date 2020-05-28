@@ -3,8 +3,9 @@ module.exports = ( app ) => {
 
   // Get all errors
   app.get( '/api/errors', async ( req, res ) => {
-    
-    res.json({ "success": false });
+    const r = await errorController.Read.all();
+    const success = ( r && r.length > 0 );
+    res.json({ "success": success, "errors": r });
   });
 
   // post error
