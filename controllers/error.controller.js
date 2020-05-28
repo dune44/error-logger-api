@@ -20,7 +20,7 @@ const methods = {
   Read: {
     all: async () => {
       try {
-
+        return await errorSchema.find({});
       } catch ( e ) {
         console.error( e );
       }

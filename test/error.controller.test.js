@@ -199,7 +199,7 @@ describe( 'Read all', () => {
 
   before( async () => {
     read_all_result = await errorController.Read.all();
-    done();
+    return;
   });
 
   after( done => { done(); } );
@@ -210,44 +210,44 @@ describe( 'Read all', () => {
   });
 
   it( 'read_all_result.file should be a string', () => {
-    expect( read_all_result.file ).to.be.a( 'string' );
+    expect( read_all_result[0].file ).to.be.a( 'string' );
   });
 
   it( 'read_all_result.info should be a string', () => {
-    expect( read_all_result.info ).to.be.a( 'string' );
+    expect( read_all_result[0].info ).to.be.a( 'string' );
   });
 
   it( 'read_all_result.message should be a string', () => {
-    expect( read_all_result.message ).to.be.a( 'string' );
+    expect( read_all_result[0].message ).to.be.a( 'string' );
   });
 
   it( 'read_all_result.method should be a string', () => {
-    expect( read_all_result.method ).to.be.a( 'string' );
+    expect( read_all_result[0].method ).to.be.a( 'string' );
   });
 
   it( 'read_all_result.processId should be a string', () => {
-    expect( read_all_result.processId ).to.be.a( 'string' );
+    expect( read_all_result[0].processId ).to.be.a( 'string' );
   });
 
   it( 'read_all_result.serverName should be a string', () => {
-    expect( read_all_result.serverName ).to.be.a( 'string' );
+    expect( read_all_result[0].serverName ).to.be.a( 'string' );
   });
 
   it( 'read_all_result.stackTrace should be a string', () => {
-    expect( read_all_result.stackTrace ).to.be.a( 'string' );
+    expect( read_all_result[0].stackTrace ).to.be.a( 'string' );
   });
 
   it( 'read_all_result.timestamp should be a string', () => {
-    expect( read_all_result.timestamp ).to.be.a( 'string' );
+    expect( read_all_result[0].timestamp ).to.be.a( 'string' );
   });
 
   it( 'read_all_result.variables should be a string', () => {
-    expect( read_all_result.variables ).to.be.a( 'string' );
+    expect( read_all_result[0].variables ).to.be.a( 'string' );
   });
 
   // Return Value
   it( 'read_all_result should be have length of 1', () => {
     expect( read_all_result.length ).to.equal( 1 );
   });
-  
+
 });
