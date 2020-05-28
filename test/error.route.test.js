@@ -70,7 +70,7 @@ describe('Error Route /api/error', () =>{
       chai.request( server )
         .post( '/api/error' )
         .send( errorObj )
-        .end(( e, res ) => {
+        .end( ( e, res ) => {
           if ( e ) console.error( e );
           else {
             res.should.have.status( 201 );
@@ -83,7 +83,28 @@ describe('Error Route /api/error', () =>{
   });
 
   describe('GET All errors', async () => {
-
+    it( 'it should return the 2 stored errors', done => {
+      chai.request( server )
+        .get( '/api/errors' )
+        .end( ( e, res ) => {
+          if ( e ) console.error( e );
+          else {
+            res.should.have.status( 200 );
+            res.body.should.have.property( 'errors' );
+            expect( res.body.errors.length ).to.equal( 2 );
+            expect( res.body.errors[0].file ).to.be.a( 'string' );
+            expect( res.body.errors[0].info ).to.be.a( 'string' );
+            expect( res.body.errors[0].message ).to.be.a( 'string' );
+            expect( res.body.errors[0].method ).to.be.a( 'string' );
+            expect( res.body.errors[0].processId ).to.be.a( 'string' );
+            expect( res.body.errors[0].serverName ).to.be.a( 'string' );
+            expect( res.body.errors[0].stackTrace ).to.be.a( 'string' );
+            expect( res.body.errors[0].timestamp ).to.be.a( 'string' );
+            expect( res.body.errors[0].variables ).to.be.a( 'string' );
+            done();
+          }
+        });
+    });
   });
 
 });

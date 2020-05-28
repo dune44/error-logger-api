@@ -2,7 +2,7 @@ const errorController = require( './../../controllers/error.controller' );
 module.exports = ( app ) => {
 
   // Get all errors
-  app.get( '/api/error', async ( req, res ) => {
+  app.get( '/api/errors', async ( req, res ) => {
     
     res.json({ "success": false });
   });
