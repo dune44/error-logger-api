@@ -3,8 +3,6 @@ module.exports = env => {
   const mongoose = require( 'mongoose' );
   const bodyParser = require( 'body-parser' );
   const config = require( ( process.env && process.env.NODE_ENV && process.env.NODE_ENV === 'production' ) ? './../etc/production.config' : ( env == 'dev') ? './../etc/dev.config' : './../etc/test.config' );
-  console.log( 'config' );
-  console.log( config );
   const MongoUri = config.MONGO_URL + config.DATABASE;
   mongoose.connect( MongoUri,  { "useNewUrlParser": true, "useUnifiedTopology": true, "useCreateIndex": true } );
   const app = express();

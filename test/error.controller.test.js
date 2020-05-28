@@ -32,13 +32,13 @@ describe( 'Create a full error', () => {
 
   let create_result;
 
-  before( async () => {
+  before( done => {
     purgeDB( async () => {
       create_result = await errorController.Create.error( errorObj );
       // Aux variables for testing.  Not for exposure to endpoint.
       eid = create_result._id;
       resultTimestamp = create_result.timestamp;
-      return;
+      done();
     });
   });
 
@@ -155,40 +155,40 @@ describe( 'check database saved values', () => {
   });
 
   // Return Value
-  it( 'create_result.file should have a value of errorObj', () => {
-    expect( create_result.file ).to.equal( errorObj.file );
+  it( 'read_result.file should have a value of errorObj', () => {
+    expect( read_result.file ).to.equal( errorObj.file );
   });
 
-  it( 'create_result.info should have a value of errorObj', () => {
-    expect( create_result.info ).to.equal( errorObj.info );
+  it( 'read_result.info should have a value of errorObj', () => {
+    expect( read_result.info ).to.equal( errorObj.info );
   });
 
-  it( 'create_result.message should have a value of errorObj', () => {
-    expect( create_result.message ).to.equal( errorObj.message );
+  it( 'read_result.message should have a value of errorObj', () => {
+    expect( read_result.message ).to.equal( errorObj.message );
   });
 
-  it( 'create_result.method should have a value of errorObj', () => {
-    expect( create_result.method ).to.equal( errorObj.method );
+  it( 'read_result.method should have a value of errorObj', () => {
+    expect( read_result.method ).to.equal( errorObj.method );
   });
 
-  it( 'create_result.processId should have a value of errorObj', () => {
-    expect( create_result.processId ).to.equal( errorObj.processId );
+  it( 'read_result.processId should have a value of errorObj', () => {
+    expect( read_result.processId ).to.equal( errorObj.processId );
   });
 
-  it( 'create_result.serverName should have a value of errorObj', () => {
-    expect( create_result.serverName ).to.equal( errorObj.serverName );
+  it( 'read_result.serverName should have a value of errorObj', () => {
+    expect( read_result.serverName ).to.equal( errorObj.serverName );
   });
 
-  it( 'create_result.stackTrace should have a value of errorObj', () => {
-    expect( create_result.stackTrace ).to.equal( errorObj.stackTrace );
+  it( 'read_result.stackTrace should have a value of errorObj', () => {
+    expect( read_result.stackTrace ).to.equal( errorObj.stackTrace );
   });
 
-  it( 'create_result.timestamp should have a value of resultTimestamp', () => {
-    expect( create_result.timestamp ).to.equal( resultTimestamp );
+  it( 'read_result.timestamp should have a value of resultTimestamp', () => {
+    expect( read_result.timestamp ).to.equal( resultTimestamp );
   });
 
-  it( 'create_result.variables should have a value of errorObj', () => {
-    expect( create_result.variables ).to.equal( errorObj.variables );
+  it( 'read_result.variables should have a value of errorObj', () => {
+    expect( read_result.variables ).to.equal( errorObj.variables );
   });
 
 });

@@ -7,9 +7,7 @@ const methods = {
       try {
         errorObj.timestamp = h.now();
         const r = await new errorSchema( errorObj ).save();
-        console.log( 'r' );
-        console.log( r );
-        const success = ( r && r.length === 1 );
+        const success = ( r && r.timestamp && typeof r.timestamp === 'string' );
         if ( success )
           return { "timestamp": errorObj.timestamp, "_id": r._id, "success": success };
         else
