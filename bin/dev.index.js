@@ -1,11 +1,6 @@
-let NODE_ENV;
-if ( process.env && process.env.NODE_ENV )
-  NODE_ENV = process.env.NODE_ENV;
-else if ( !NODE_ENV )
-  NODE_ENV = 'dev';
-
-const app = require( './app' )( NODE_ENV );
-const config = require( './../etc/' + NODE_ENV + '.config' );
+const NODE_ENV = 'test';
+const app = require( './dev.app' );
+const config = require( './../etc/dev.config' );
   
 app.set('port', config.PORT || 1337);
 app.set('address', config.ADDRESS || 'localhost');

@@ -1,14 +1,14 @@
 const express = require( 'express' );
 const mongoose = require( 'mongoose' );
 const bodyParser = require( 'body-parser' );
-const config = require( './../etc/production.config' );
+const config = require( './../etc/test.config' );
 const MongoUri = config.MONGO_URL + config.DATABASE;
 mongoose.connect( MongoUri,  { "useNewUrlParser": true, "useUnifiedTopology": true, "useCreateIndex": true } );
 const app = express();
-app.use(bodyParser.json());
+app.use( bodyParser.json() );
 app.use(bodyParser.urlencoded({ 'extended': false }));
 app.use( bodyParser.json() );
-( () => { require( './routes/api.route' )( app ); })();
+require( './routes/api.route' )( app );
 app.use( (req, res, next) => {
   res.status(404).send('Sorry cant find that!');
 });

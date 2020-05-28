@@ -1,7 +1,7 @@
 const express = require( 'express' );
 const mongoose = require( 'mongoose' );
 const bodyParser = require( 'body-parser' );
-const config = require( './../etc/production.config' );
+const config = require( './../etc/dev.config' );
 const MongoUri = config.MONGO_URL + config.DATABASE;
 mongoose.connect( MongoUri,  { "useNewUrlParser": true, "useUnifiedTopology": true, "useCreateIndex": true } );
 const app = express();

@@ -1,4 +1,4 @@
-require( './../bin/app' )( 'test' );
+require( './../bin/test.app' );
 const errorController = require( './../controllers/error.controller' );
 const errorSchema = require( './../schema/errors.schema' );
 const chai = require( 'chai' );
