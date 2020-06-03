@@ -19,6 +19,8 @@ module.exports = ( app ) => {
     if ( h.isVal( req.body.processId ) ) errorObj.file = req.body.processId;
     if ( h.isVal( req.body.stackTrace ) ) errorObj.file = req.body.stackTrace;
     if ( h.isVal( req.body.variables ) ) errorObj.file = req.body.variables;
+    console.log( 'Error Obj recieved' );
+    console.log( errorObj );
     const r = await errorController.Create.error( errorObj );
     res.status( 201 ).json({ "success": r.success });
   });
