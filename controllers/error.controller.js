@@ -8,10 +8,13 @@ const methods = {
         errorObj.timestamp = h.now();
         const r = await new errorSchema( errorObj ).save();
         const success = ( r && r.timestamp && typeof r.timestamp === 'string' );
+        let result;
         if ( success )
-          return { "timestamp": errorObj.timestamp, "_id": r._id, "success": success };
+          result = { "timestamp": errorObj.timestamp, "_id": r._id, "success": success };
         else
-          return { "timestamp": errorObj.timestamp, "success": success };
+          result = { "timestamp": errorObj.timestamp, "success": success };
+        console.log( 'error result' );
+        return result;
       } catch ( e ) {
         console.error( e );
       }
