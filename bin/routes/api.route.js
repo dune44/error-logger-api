@@ -17,7 +17,7 @@ module.exports = ( app ) => {
     if ( h.isVal( req.body.message ) ) errorObj.message = req.body.message;
     if ( h.isVal( req.body.method ) ) errorObj.method = req.body.method;
     if ( h.isVal( req.body.processId ) ) errorObj.processId = req.body.processId;
-    if ( h.isVal( req.body.stackTrace ) ) errorObj.stackTrace = req.body.stackTrace;
+    if ( h.isVal( req.body.stackTrace ) ) errorObj.stackTrace = JSON.stringify( req.body.stackTrace );
     if ( h.isVal( req.body.variables ) ) errorObj.variables = req.body.variables;
     console.log( 'Error Obj recieved' );
     console.log( errorObj );
