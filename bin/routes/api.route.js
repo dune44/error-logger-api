@@ -13,12 +13,12 @@ module.exports = ( app ) => {
   app.post( '/api/error', async ( req, res ) => {
     let  errorObj = {};
     if ( h.isVal( req.body.file ) ) errorObj.file = req.body.file;
-    if ( h.isVal( req.body.info ) ) errorObj.file = req.body.info;
-    if ( h.isVal( req.body.message ) ) errorObj.file = req.body.message;
-    if ( h.isVal( req.body.method ) ) errorObj.file = req.body.method;
-    if ( h.isVal( req.body.processId ) ) errorObj.file = req.body.processId;
-    if ( h.isVal( req.body.stackTrace ) ) errorObj.file = req.body.stackTrace;
-    if ( h.isVal( req.body.variables ) ) errorObj.file = req.body.variables;
+    if ( h.isVal( req.body.info ) ) errorObj.info = req.body.info;
+    if ( h.isVal( req.body.message ) ) errorObj.message = req.body.message;
+    if ( h.isVal( req.body.method ) ) errorObj.method = req.body.method;
+    if ( h.isVal( req.body.processId ) ) errorObj.processId = req.body.processId;
+    if ( h.isVal( req.body.stackTrace ) ) errorObj.stackTrace = req.body.stackTrace;
+    if ( h.isVal( req.body.variables ) ) errorObj.variables = req.body.variables;
     console.log( 'Error Obj recieved' );
     console.log( errorObj );
     const r = await errorController.Create.error( errorObj );
