@@ -1,4 +1,5 @@
 const errorController = require( './../../controllers/error.controller' );
+const h = require( './../../controllers/helper.lib' );
 module.exports = ( app ) => {
 
   // Get all errors
@@ -10,15 +11,14 @@ module.exports = ( app ) => {
 
   // post error
   app.post( '/api/error', async ( req, res ) => {
-    const errorObj = {
-      "file": req.body.file,
-      "info": req.body.info,
-      "message": req.body.message,
-      "method": req.body.method,
-      "processId": req.body.processId,
-      "stackTrace": req.body.stackTrace,
-      "variables": req.body.variables
-    };
+    let  errorObj = {};
+    if ( h.isVal( req.body.file ) ) errorObj.file = req.body.file;
+    if ( h.isVal( req.body.info ) ) errorObj.file = req.body.info;
+    if ( h.isVal( req.body.message ) ) errorObj.file = req.body.message;
+    if ( h.isVal( req.body.method ) ) errorObj.file = req.body.method;
+    if ( h.isVal( req.body.processId ) ) errorObj.file = req.body.processId;
+    if ( h.isVal( req.body.stackTrace ) ) errorObj.file = req.body.stackTrace;
+    if ( h.isVal( req.body.variables ) ) errorObj.file = req.body.variables;
     const r = await errorController.Create.error( errorObj );
     res.status( 201 ).json({ "success": r.success });
   });
